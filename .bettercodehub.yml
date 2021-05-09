@@ -1,0 +1,14 @@
+
+component_depth: 4
+
+
+languages:
+- name: java
+  production:
+    include:
+      - .*/src/main/java/Ciudad/.*\.java
+      - .*/src/main/java/LineaHorizontal/.*\.java
+
+  test:
+    include:
+      - .*/test/.*\.java
