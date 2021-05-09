@@ -1,4 +1,7 @@
-package LineaHorizonte;
+package FusionLineaHorizonte;
+
+import LineaHorizonte.LineaHorizonte;
+import Punto.Punto;
 
 public class FusionLineaHorizonte {
 

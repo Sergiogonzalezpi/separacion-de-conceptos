@@ -1,9 +1,10 @@
+package Main;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
 import Ciudad.Ciudad;
-import LineaHorizonte.Punto;
 import LineaHorizonte.LineaHorizonte;
+import Punto.Punto;
 
 public class Main {
 

@@ -1,12 +1,12 @@
 package Ciudad;
 
-import LineaHorizonte.FusionLineaHorizonte;
-import LineaHorizonte.Punto;
-import LineaHorizonte.LineaHorizonte;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import FusionLineaHorizonte.FusionLineaHorizonte;
+import LineaHorizonte.LineaHorizonte;
+import Punto.Punto;
 
 
 /*
