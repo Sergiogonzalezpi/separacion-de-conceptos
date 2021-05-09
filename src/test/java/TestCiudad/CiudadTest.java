@@ -1,7 +1,7 @@
 package TestCiudad;
 
-import Edificios.Edificio;
 import Skyline.Ciudad;
+import Skyline.Edificio;
 import Skyline.LineaHorizonte;
 import junit.framework.TestCase;
 import org.junit.After;

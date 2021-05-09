@@ -5,8 +5,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import Punto.Punto;
-
 public class LineaHorizonte {
 
 	private ArrayList<Punto> LineaHorizonte;

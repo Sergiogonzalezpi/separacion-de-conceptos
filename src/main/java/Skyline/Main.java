@@ -1,10 +1,6 @@
-package Main;
+package Skyline;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
-import Punto.Punto;
-import Skyline.Ciudad;
-import Skyline.LineaHorizonte;
 
 public class Main {
 
