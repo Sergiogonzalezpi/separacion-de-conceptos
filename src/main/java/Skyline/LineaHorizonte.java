@@ -48,6 +48,7 @@ public class LineaHorizonte {
 	public boolean isEmpty() {
 		return LineaHorizonte.isEmpty();
 	}
+	
 
 	/*
 	 * M�todo al que le pasamos una serie de par�metros para poder guardar la linea

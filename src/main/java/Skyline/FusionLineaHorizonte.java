@@ -20,6 +20,9 @@ public class FusionLineaHorizonte {
 	private int a2y;
 	
 	private LineaHorizonte salida;
+	
+	private int countLH1;
+	private int countLH2;
 
 	public FusionLineaHorizonte(LineaHorizonte l1, LineaHorizonte l2) {
 		this.s1y = -1;
@@ -29,11 +32,13 @@ public class FusionLineaHorizonte {
 		this.lh2 = l2;
 		this.lh1 = l1;
 		this.imprimirBanner(this.lh1, this.lh2);
-		this.puntoMenor = new Punto();
 		this.p1 = new Punto();
 		this.p2 = new Punto();
 		
-		while ((!this.lh1.isEmpty()) && (!this.lh2.isEmpty())) {
+		this.countLH1 = this.lh1.size();
+		this.countLH2 = this.lh2.size();
+		
+		while (!(countLH1==0) && !(countLH2==0)) {
 			this.paux = new Punto();
 			this.p1 = this.lh1.getPunto(0);
 			this.p2 = this.lh2.getPunto(0);
@@ -72,6 +77,8 @@ public class FusionLineaHorizonte {
 		this.s2y = a2y;
 		this.lh1.borrarPunto(0); // eliminamos el punto del s1 y del s2
 		this.lh2.borrarPunto(0);
+		this.countLH1-=1;
+		this.countLH2-=1;
 	}
 	
 	private void getVariables() {
@@ -101,17 +108,20 @@ public class FusionLineaHorizonte {
 		if (this.puntoMenor.equals(this.p1)) {
 			this.s1y = a1y;
 			this.lh1.borrarPunto(0);
+			this.countLH1-=1;
+			
 		} 
 		else if (this.puntoMenor.equals(this.p2)) {
 			this.s2y = a2y;
 			this.lh2.borrarPunto(0);
+			this.countLH2-=1;
 		}
 	}
 	
 	public void fusionOtrosCasos() {
 		int auxy = 0;
 		
-		while ((!this.lh1.isEmpty())) // si aun nos quedan elementos en el s1
+		while (!(countLH1==0)) // si aun nos quedan elementos en el s1
 		{
 			this.paux = this.lh1.getPunto(0); // guardamos en paux el primer punto
 			auxy = this.paux.getY();
@@ -120,10 +130,11 @@ public class FusionLineaHorizonte {
 				this.salida.addPunto(this.paux); // lo añadimos al LineaHorizonte de salida
 				this.prev = auxy; // y actualizamos prev
 			}
-			this.lh1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es
+			this.lh1.borrarPunto(0);
+			this.countLH1-=1;// en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es
 			// valido)
 		}
-		while ((!this.lh2.isEmpty())) // si aun nos quedan elementos en el s2
+		while (!(countLH2==0)) // si aun nos quedan elementos en el s2
 		{
 			this.paux = this.lh2.getPunto(0); // guardamos en paux el primer punto
 			auxy = this.paux.getY();
@@ -132,7 +143,8 @@ public class FusionLineaHorizonte {
 				this.salida.addPunto(paux); // lo añadimos al LineaHorizonte de salida
 				this.prev = auxy; // y actualizamos prev
 			}
-			this.lh2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es
+			this.lh2.borrarPunto(0);
+			this.countLH2-=1;// en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es
 			// valido)
 		}
 	}
