@@ -1,11 +1,10 @@
-package Ciudad;
+package Skyline;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import FusionLineaHorizonte.FusionLineaHorizonte;
-import LineaHorizonte.LineaHorizonte;
+import Edificios.Edificio;
 import Punto.Punto;
 
 

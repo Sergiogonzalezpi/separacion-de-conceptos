@@ -1,6 +1,5 @@
-package FusionLineaHorizonte;
+package Skyline;
 
-import LineaHorizonte.LineaHorizonte;
 import Punto.Punto;
 
 public class FusionLineaHorizonte {

@@ -1,4 +1,4 @@
-package Ciudad;
+package Edificios;
 
 public class Edificio {
 	private int xi;

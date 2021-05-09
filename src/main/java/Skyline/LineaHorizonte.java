@@ -1,4 +1,4 @@
-package LineaHorizonte;
+package Skyline;
 
 import java.io.File;
 import java.io.FileWriter;

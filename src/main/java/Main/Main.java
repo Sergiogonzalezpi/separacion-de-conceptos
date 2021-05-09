@@ -2,9 +2,9 @@ package Main;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import Ciudad.Ciudad;
-import LineaHorizonte.LineaHorizonte;
 import Punto.Punto;
+import Skyline.Ciudad;
+import Skyline.LineaHorizonte;
 
 public class Main {
 
