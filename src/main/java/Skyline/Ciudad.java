@@ -81,17 +81,6 @@ public class Ciudad {
 
 	public LineaHorizonte lineaHorizonteFussion(LineaHorizonte s1, LineaHorizonte s2) {
 		FusionLineaHorizonte lineaHorizonte = new FusionLineaHorizonte(s1,s2);
-		while ((!lineaHorizonte.lh1.isEmpty()) && (!lineaHorizonte.lh2.isEmpty())) {
-			lineaHorizonte.paux = new Punto();
-			lineaHorizonte.p1 = lineaHorizonte.lh1.getPunto(0);
-			lineaHorizonte.p2 = lineaHorizonte.lh2.getPunto(0);
-			lineaHorizonte.puntoMenor = lineaHorizonte.getMenor();
-			if (lineaHorizonte.p1.getX() != lineaHorizonte.p2.getX())
-				lineaHorizonte.fusionPuntosDiferentes();
-			else
-				lineaHorizonte.fusionPuntosIguales();
-		}
-		lineaHorizonte.fusionOtrosCasos();
 		return lineaHorizonte.getSalida();
 	}
 	/*

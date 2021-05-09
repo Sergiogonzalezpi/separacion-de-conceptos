@@ -6,13 +6,18 @@ public class FusionLineaHorizonte {
 	private int s2y;
 	private int s1y;
 
-	public Punto puntoMenor;
+	private Punto puntoMenor;
 	
-	public LineaHorizonte lh1;
-	public LineaHorizonte lh2;
+	private LineaHorizonte lh1;
+	private LineaHorizonte lh2;
 
-	public Punto paux;
-	public Punto p1, p2;
+	private Punto paux;
+	private Punto p1, p2;
+	
+	private int a1x;
+	private int a2x;
+	private int a1y;
+	private int a2y;
 	
 	private LineaHorizonte salida;
 
@@ -27,9 +32,21 @@ public class FusionLineaHorizonte {
 		this.lh2.setLineaHorizonte(l2.getLineaHorizonte());
 		this.imprimirBanner(this.lh1, this.lh2);
 		this.puntoMenor = new Punto();
-		this.paux = new Punto();
 		this.p1 = new Punto();
 		this.p2 = new Punto();
+		
+		while ((!this.lh1.isEmpty()) && (!this.lh2.isEmpty())) {
+			this.getVariables();
+			this.paux = new Punto();
+			this.p1 = this.lh1.getPunto(0);
+			this.p2 = this.lh2.getPunto(0);
+			this.puntoMenor = this.getMenor();
+			if (a1x != a2x)
+				this.fusionPuntosDiferentes();
+			else
+				this.fusionPuntosIguales();
+		}
+		this.fusionOtrosCasos();
 	}
 	
 	public LineaHorizonte getSalida() {
@@ -37,36 +54,49 @@ public class FusionLineaHorizonte {
 	}
 	
 	public Punto getMenor (){
-        if (this.p1.getX() < this.p2.getX()) return p1;
-        else if (this.p1.getX() > this.p2.getX()) return p2;
+		this.getVariables();
+        if (a1x<a2x) return p1;
+        else if (a1x>a2x) return p2;
         else return null;
     }
 	
 	public void fusionPuntosIguales() {
-		if ((this.p1.getY() > this.p2.getY()) && (this.p1.getY() != this.prev)) 
+		this.getVariables();
+		if ((a1x > a2x) && (a1x != this.prev)) 
 		{
 			this.salida.addPunto(this.p1);
-			this.prev = this.p1.getY();
+			this.prev = a2y;
 		}
-		if ((this.p1.getY() <= this.p2.getY()) && (this.p2.getY() != this.prev)) 
+		if ((a1y <= a2y) && (a2y != this.prev)) 
 		{
 				this.salida.addPunto(this.p2);
-				this.prev = this.p2.getY();
+				this.prev = a2y;
 		}
-		this.s1y = this.p1.getY(); // actualizamos la s1y e s2y
-		this.s2y = this.p2.getY();
+		this.s1y = a1y; // actualizamos la s1y e s2y
+		this.s2y = a2y;
 		this.lh1.borrarPunto(0); // eliminamos el punto del s1 y del s2
 		this.lh2.borrarPunto(0);
 	}
+	
+	private void getVariables() {
+		this.a1x = this.p1.getX();
+		this.a2x = this.p2.getX();
+		this.a1y = this.p1.getY();
+		this.a2y = this.p2.getY();
+	}
 
 	public void fusionPuntosDiferentes() {
-		this.paux.setX(this.puntoMenor.getX());
+		this.getVariables();
+		int menorx = this.puntoMenor.getX();
+		int menory = this.puntoMenor.getY();
+		
+		this.paux.setX(menorx);
 
 		if (this.puntoMenor.equals(this.p1))
-			this.paux.setY(Math.max(this.puntoMenor.getY(), this.s2y));
+			this.paux.setY(Math.max(menory, this.s2y));
 
 		else if (this.puntoMenor.equals(this.p2))
-			this.paux.setY(Math.max(this.puntoMenor.getY(), this.s1y));
+			this.paux.setY(Math.max(menory, this.s1y));
 
 		if (this.paux.getY() != prev) {
 			salida.addPunto(this.paux); // añadimos el punto al LineaHorizonte de salida
