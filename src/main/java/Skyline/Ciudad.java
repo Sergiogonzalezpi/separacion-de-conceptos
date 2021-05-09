@@ -49,40 +49,32 @@ public class Ciudad {
 		int pd = ciudad.size() - 1;
 		return crearLineaHorizonte(pi, pd);
 	}
-
-	public LineaHorizonte crearLineaHorizonte(int pi, int pd) {
-		LineaHorizonte linea = new LineaHorizonte(); // LineaHorizonte de salida
-// Caso base, la ciudad solo tiene un edificio, el perfil es el de ese edificio. 
-		if (pi == pd) {
-			Edificio edificio = this.getEdificio(pi); // Obtenemos el único edificio y lo guardo en b
-// En cada punto guardamos la coordenada X y la altura.
-			Punto p1 = new Punto(edificio.getXi(),edificio.getY());
-			Punto p2 = new Punto(edificio.getXd(),0);
-// Añado los puntos a la línea del horizonte
-			linea.addPunto(p1);
-			linea.addPunto(p2);
-		} else {
-// Edificio mitad
-			int medio = (pi + pd) / 2;
-			Punto a = null, b = null, aux = null;
-			linea = lineaHorizonteFussion(this.crearLineaHorizonte(pi, medio),this.crearLineaHorizonte(medio + 1, pd));
-		}
-		return linea;
-	}
-
-	/**
+	
+/**
 	 * Función encargada de fusionar los dos LineaHorizonte obtenidos por la técnica
 	 * divide y vencerás. Es una función muy compleja ya que es la encargada de
 	 * decidir si un edificio solapa a otro, si hay edificios contiguos, etc. y
 	 * solucionar dichos problemas para que el LineaHorizonte calculado sea el
 	 * correcto.
 	 */
-
-
-	public LineaHorizonte lineaHorizonteFussion(LineaHorizonte s1, LineaHorizonte s2) {
-		FusionLineaHorizonte lineaHorizonte = new FusionLineaHorizonte(s1,s2);
-		return lineaHorizonte.getSalida();
+	
+	public LineaHorizonte crearLineaHorizonte(int pi, int pd) {
+		LineaHorizonte linea = new LineaHorizonte(); // LineaHorizonte de salida. Caso base, la ciudad solo tiene un edificio, el perfil es el de ese edificio. 
+		if (pi == pd) {
+			Edificio edificio = this.getEdificio(pi); // Obtenemos el único edificio y lo guardo en b. En cada punto guardamos la coordenada X y la altura.
+			Punto p1 = new Punto(edificio.getXi(),edificio.getY());
+			Punto p2 = new Punto(edificio.getXd(),0);
+			linea.addPunto(p1); // Añado los puntos a la línea del horizonte
+			linea.addPunto(p2);
+		} else { // Edificio mitad
+			int medio = (pi + pd) / 2;
+			FusionLineaHorizonte lineaHorizonte = new FusionLineaHorizonte(this.crearLineaHorizonte(pi, medio),this.crearLineaHorizonte(medio + 1, pd));
+			linea = lineaHorizonte.getSalida();
+		}
+		return linea;
 	}
+
+	
 	/*
 	 * Método que carga los edificios que me pasan en el archivo cuyo nombre se
 	 * encuentra en "fichero". El formato del fichero nos lo ha dado el profesor en

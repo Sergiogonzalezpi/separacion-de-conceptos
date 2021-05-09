@@ -26,10 +26,8 @@ public class FusionLineaHorizonte {
 		this.s2y = -1;
 		this.prev = -1;
 		this.salida = new LineaHorizonte();
-		this.lh2 = new LineaHorizonte();
-		this.lh1 = new LineaHorizonte();
-		this.lh1.setLineaHorizonte(l1.getLineaHorizonte());
-		this.lh2.setLineaHorizonte(l2.getLineaHorizonte());
+		this.lh2 = l2;
+		this.lh1 = l1;
 		this.imprimirBanner(this.lh1, this.lh2);
 		this.puntoMenor = new Punto();
 		this.p1 = new Punto();
