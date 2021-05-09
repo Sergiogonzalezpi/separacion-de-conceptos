@@ -36,10 +36,10 @@ public class FusionLineaHorizonte {
 		this.p2 = new Punto();
 		
 		while ((!this.lh1.isEmpty()) && (!this.lh2.isEmpty())) {
-			this.getVariables();
 			this.paux = new Punto();
 			this.p1 = this.lh1.getPunto(0);
 			this.p2 = this.lh2.getPunto(0);
+			this.getVariables();
 			this.puntoMenor = this.getMenor();
 			if (a1x != a2x)
 				this.fusionPuntosDiferentes();
@@ -54,14 +54,12 @@ public class FusionLineaHorizonte {
 	}
 	
 	public Punto getMenor (){
-		this.getVariables();
-        if (a1x<a2x) return p1;
-        else if (a1x>a2x) return p2;
+        if (a1x<a2x) return this.p1;
+        else if (a1x>a2x) return this.p2;
         else return null;
     }
 	
 	public void fusionPuntosIguales() {
-		this.getVariables();
 		if ((a1x > a2x) && (a1x != this.prev)) 
 		{
 			this.salida.addPunto(this.p1);
@@ -86,7 +84,6 @@ public class FusionLineaHorizonte {
 	}
 
 	public void fusionPuntosDiferentes() {
-		this.getVariables();
 		int menorx = this.puntoMenor.getX();
 		int menory = this.puntoMenor.getY();
 		
@@ -104,24 +101,26 @@ public class FusionLineaHorizonte {
 		}
 
 		if (this.puntoMenor.equals(this.p1)) {
-			this.s1y = this.p1.getY();
+			this.s1y = a1y;
 			this.lh1.borrarPunto(0);
 		} 
 		else if (this.puntoMenor.equals(this.p2)) {
-			this.s2y = this.p2.getY();
+			this.s2y = a2y;
 			this.lh2.borrarPunto(0);
 		}
 	}
 	
 	public void fusionOtrosCasos() {
+		int auxy = 0;
+		
 		while ((!this.lh1.isEmpty())) // si aun nos quedan elementos en el s1
 		{
 			this.paux = this.lh1.getPunto(0); // guardamos en paux el primer punto
-
-			if (this.paux.getY() != this.prev) // si paux no tiene la misma altura del segmento previo
+			auxy = this.paux.getY();
+			if (auxy != this.prev) // si paux no tiene la misma altura del segmento previo
 			{
 				this.salida.addPunto(this.paux); // lo añadimos al LineaHorizonte de salida
-				this.prev = this.paux.getY(); // y actualizamos prev
+				this.prev = auxy; // y actualizamos prev
 			}
 			this.lh1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es
 			// valido)
@@ -129,11 +128,11 @@ public class FusionLineaHorizonte {
 		while ((!this.lh2.isEmpty())) // si aun nos quedan elementos en el s2
 		{
 			this.paux = this.lh2.getPunto(0); // guardamos en paux el primer punto
-
-			if (this.paux.getY() != prev) // si paux no tiene la misma altura del segmento previo
+			auxy = this.paux.getY();
+			if (auxy != prev) // si paux no tiene la misma altura del segmento previo
 			{
 				this.salida.addPunto(paux); // lo añadimos al LineaHorizonte de salida
-				this.prev = this.paux.getY(); // y actualizamos prev
+				this.prev = auxy; // y actualizamos prev
 			}
 			this.lh2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es
 			// valido)
