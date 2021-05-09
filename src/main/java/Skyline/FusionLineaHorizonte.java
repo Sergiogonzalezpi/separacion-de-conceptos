@@ -32,8 +32,6 @@ public class FusionLineaHorizonte {
 		this.lh2 = l2;
 		this.lh1 = l1;
 		this.imprimirBanner(this.lh1, this.lh2);
-		this.p1 = new Punto();
-		this.p2 = new Punto();
 		
 		this.countLH1 = this.lh1.size();
 		this.countLH2 = this.lh2.size();
@@ -120,7 +118,6 @@ public class FusionLineaHorizonte {
 	
 	public void fusionOtrosCasos() {
 		int auxy = 0;
-		
 		while (!(countLH1==0)) // si aun nos quedan elementos en el s1
 		{
 			this.paux = this.lh1.getPunto(0); // guardamos en paux el primer punto
@@ -148,7 +145,7 @@ public class FusionLineaHorizonte {
 			// valido)
 		}
 	}
-
+	
 	private void imprimirBanner(LineaHorizonte s1, LineaHorizonte s2) {
 		System.out.println("==== S1 ====");
 		s1.imprimir();
