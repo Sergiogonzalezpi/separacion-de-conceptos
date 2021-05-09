@@ -2,7 +2,7 @@ package Skyline;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import Dominio.Punto;
+import Dominio.Ciudad;
 
 public class Main {
 

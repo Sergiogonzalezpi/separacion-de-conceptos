@@ -1,11 +1,12 @@
-package Skyline;
+package Dominio;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Dominio.Edificio;
-import Dominio.Punto;
+import Skyline.FusionLineaHorizonte;
+import Skyline.LineaHorizonte;
+import Skyline.Punto;
 
 
 /*
