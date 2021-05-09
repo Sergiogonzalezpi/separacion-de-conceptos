@@ -1,6 +1,7 @@
 package TestCiudad;
 
 import Skyline.Ciudad;
+import Skyline.LineaHorizonte;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -10,7 +11,6 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import Dominio.Edificio;
-import Dominio.LineaHorizonte;
 
 
 

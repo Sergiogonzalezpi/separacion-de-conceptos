@@ -1,9 +1,11 @@
-package Dominio;
+package Skyline;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import Dominio.Punto;
 
 public class LineaHorizonte {
 

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Dominio.Edificio;
-import Dominio.LineaHorizonte;
 import Dominio.Punto;
 
 
