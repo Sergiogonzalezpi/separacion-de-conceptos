@@ -2,6 +2,9 @@ package Skyline;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import Dominio.LineaHorizonte;
+import Dominio.Punto;
+
 public class Main {
 
 	public static void main(String[] args) {

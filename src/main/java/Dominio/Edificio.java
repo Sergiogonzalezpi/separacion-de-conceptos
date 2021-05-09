@@ -1,4 +1,4 @@
-package Skyline;
+package Dominio;
 
 public class Edificio {
 	private int xi;

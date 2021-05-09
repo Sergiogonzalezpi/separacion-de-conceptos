@@ -1,5 +1,8 @@
 package Skyline;
 
+import Dominio.LineaHorizonte;
+import Dominio.Punto;
+
 public class FusionLineaHorizonte {
 
 	private int prev;
